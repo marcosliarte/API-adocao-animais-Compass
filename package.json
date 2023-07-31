@@ -4,7 +4,7 @@
   "main": "dist/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec ts-node src/app.ts"
+    "start": "nodemon --exec ts-node src/app.ts",
     "compile": "tsc",
     "serve": "node dist/server.js",
     "watch": "tsc -w"
@@ -24,6 +24,7 @@
     "@types/mongoose": "^5.11.97",
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.6"
   }
 }

@@ -11,7 +11,7 @@ export const createPet = async (req: Request, res: Response) => {
     }
 
     const pet = await Pet.create({ ...req.body, tutorId });
-    tutor.pets.push(pet);
+    tutor.pets?.push(pet);
     await tutor.save();
 
     res.json(pet);

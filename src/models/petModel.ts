@@ -1,7 +1,6 @@
 import mongoose, {Schema, Document, model} from "mongoose";
 
 export interface Pet{
-    id: number;
     name: string;
     species: string;
     carry: string;
@@ -9,7 +8,7 @@ export interface Pet{
     date_of_birth: string;
 }
 
-export interface PetModel extends Pet, Document {}
+export interface PetModel extends Document, Pet {}
 
 const petSchema = new Schema({
     id: {type: Number, require: true},

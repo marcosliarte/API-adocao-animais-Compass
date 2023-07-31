@@ -1,7 +1,7 @@
 import mongoose, {Schema, Document, model} from 'mongoose';
+import { Pet } from './petModel';
 
 export interface Tutor{
-    id:number;
     name:string;
     phone:string;
     email:string;
@@ -10,7 +10,7 @@ export interface Tutor{
     pets?: Pet[];
 }
 
-export interface TutorModel extends Tutor, Document {}
+export interface TutorModel extends Document, Tutor {}
 
 const tutorSchema = new Schema({
     id: {type: Number, require: true},
