@@ -59,7 +59,7 @@ Os modelos para as entidades "Tutor" e "Pet" estão definidos nos arquivos tutor
 
 
 Contato
-Se tiver alguma dúvida ou precisar de mais informações, você pode entrar em contato comigo através do e-mail marcos.liarte.neves@gmail.com.
+Se tiver alguma dúvida ou precisar de mais informações, você pode entrar em contato comigo através do e-mail marcos.neves.pb@compasso.com.br.
 
 Autor
 Este projeto foi desenvolvido por Marcos Liarte.
