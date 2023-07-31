@@ -1,16 +1,18 @@
 {
-  "name": "challenge-01",
+  "name": "veterinary-microservice",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec ts-node src/app.ts"
     "compile": "tsc",
+    "serve": "node dist/server.js",
     "watch": "tsc -w"
   },
   "keywords": [],
   "author": "Marcos Liarte",
-  "license": "ISC",
-  "description": "",
+  "license": "MIT",
+  "description": "Microservice for veterinary franchise management",
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2",

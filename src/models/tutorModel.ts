@@ -1,4 +1,4 @@
-import mongoose, {Schema, Document, model} from "mongoose";
+import mongoose, {Schema, Document, model} from 'mongoose';
 
 export interface Tutor{
     id:number;
@@ -18,7 +18,7 @@ const tutorSchema = new Schema({
     phone: {type: String, require: true},
     email: {type: String, require: true},
     date_of_birth: {type: String, require: true}, 
-    zip_code: {type: String, require: true}
+    zip_code: {type: String, require: true},
     pets: [{type: Schema.Types.ObjectId, ref: 'Pet'}]
 });
 
