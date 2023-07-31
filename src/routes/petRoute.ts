@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import mongoose from 'mongoose';
-import { createPet, updatePet, deletePet, getAllPets } from '../controllers/petController';
+import { getAllPets, createPet, updatePet, deletePet } from '../controllers/petController';
 
 const router = Router();
 
