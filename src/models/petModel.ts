@@ -1,22 +1,23 @@
-import mongoose, {Schema, Document, model} from "mongoose";
+import mongoose, { Document } from 'mongoose';
 
-export interface Pet{
-    name: string;
-    species: string;
-    carry: string;
-    weight: number;
-    date_of_birth: string;
+export interface IPet extends Document {
+  name: string;
+  species: string;
+  carry: string;
+  weight: number;
+  date_of_birth: string;
+  tutorId: mongoose.Types.ObjectId; 
 }
 
-export interface PetModel extends Document, Pet {}
-
-const petSchema = new Schema({
-    id: {type: Number, require: true},
-    name: {type: String, require: true},
-    species: {type: String, require: true},
-    carry: {type: String, require: true},
-    weight: {type: Number, require: true},
-    date_of_birth: {type: String, require: true}
+const petSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  species: { type: String, required: true },
+  carry: { type: String, required: true },
+  weight: { type: Number, required: true },
+  date_of_birth: { type: Date, required: true },
+  tutorId: { type: mongoose.Types.ObjectId, required: true },
 });
 
-export default model<PetModel>('Pet', petSchema);
+const Pet = mongoose.model<IPet>('Pet', petSchema);
+
+export default Pet;

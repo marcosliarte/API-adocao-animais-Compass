@@ -1,25 +1,23 @@
-import mongoose, {Schema, Document, model} from 'mongoose';
-import { Pet } from './petModel';
+import mongoose, { Schema, Document, model } from 'mongoose';
 
-export interface Tutor{
-    name:string;
-    phone:string;
-    email:string;
-    date_of_birth:string;
-    zip_code:string;
-    pets?: Pet[];
+export interface ITutor extends Document {
+  name: string;
+  phone: string;
+  email: string;
+  date_of_birth: Date;
+  zip_code: string;
+  pets: mongoose.Types.ObjectId[];
 }
 
-export interface TutorModel extends Document, Tutor {}
-
-const tutorSchema = new Schema({
-    id: {type: Number, require: true},
-    name: {type: String, require: true},
-    phone: {type: String, require: true},
-    email: {type: String, require: true},
-    date_of_birth: {type: String, require: true}, 
-    zip_code: {type: String, require: true},
-    pets: [{type: Schema.Types.ObjectId, ref: 'Pet'}]
+const tutorSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  phone: { type: String, required: true },
+  email: { type: String, required: true },
+  date_of_birth: { type: Date, required: true },
+  zip_code: { type: String, required: true },
+  pets: [{ type: mongoose.Types.ObjectId, ref: 'Pet' }],
 });
 
-export default model<TutorModel>('Tutor', tutorSchema);
+const TutorModel = mongoose.model<ITutor>('Tutor', tutorSchema);
+
+export default TutorModel;

@@ -1,46 +1,53 @@
 import { Request, Response } from 'express';
-import Tutor from '../models/tutorModel';
+import mongoose from 'mongoose';
+import TutorModel, { ITutor } from '../models/tutorModel';
 
 export const getAllTutors = async (req: Request, res: Response) => {
   try {
-    const tutors = await Tutor.find().populate('pets').exec();
+    const tutors = await TutorModel.find().populate('pets');
     res.json(tutors);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching tutors', error });
+    console.error(error);
+    res.status(500).json({ message: 'Error retrieving tutors', error });
   }
 };
 
 export const createTutor = async (req: Request, res: Response) => {
   try {
-    const tutor = await Tutor.create(req.body);
+    const tutorData: ITutor = req.body;
+    const tutor = await TutorModel.create(tutorData);
     res.json(tutor);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: 'Error creating tutor', error });
   }
 };
 
 export const updateTutor = async (req: Request, res: Response) => {
-    try {
-      const tutorId = req.params.id;
-      const updatedTutor = await Tutor.findByIdAndUpdate(tutorId, req.body, { new: true });
-      if (!updatedTutor) {
-        return res.status(404).json({ message: 'Tutor not found' });
-      }
-      res.json(updatedTutor);
-    } catch (error) {
-      res.status(500).json({ message: 'Error updating tutor', error });
+  try {
+    const { id } = req.params;
+    const tutorData: ITutor = req.body;
+    const tutor = await TutorModel.findByIdAndUpdate(id, tutorData, { new: true });
+    if (!tutor) {
+      return res.status(404).json({ message: 'Tutor not found' });
     }
-  };
-  
-  export const deleteTutor = async (req: Request, res: Response) => {
-    try {
-      const tutorId = req.params.id;
-      const deletedTutor = await Tutor.findByIdAndDelete(tutorId);
-      if (!deletedTutor) {
-        return res.status(404).json({ message: 'Tutor not found' });
-      }
-      res.json({ message: 'Tutor deleted successfully', deletedTutor });
-    } catch (error) {
-      res.status(500).json({ message: 'Error deleting tutor', error });
+    res.json(tutor);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error updating tutor', error });
+  }
+};
+
+export const deleteTutor = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const tutor = await TutorModel.findByIdAndDelete(id);
+    if (!tutor) {
+      return res.status(404).json({ message: 'Tutor not found' });
     }
-  };
+    res.json({ message: 'Tutor deleted successfully', tutor });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error deleting tutor', error });
+  }
+};

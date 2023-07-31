@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import mongoose from 'mongoose';
 import { getAllTutors, createTutor, updateTutor, deleteTutor } from '../controllers/tutorController';
 
 const router = Router();
